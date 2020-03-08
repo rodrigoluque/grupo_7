@@ -40,6 +40,12 @@ Route::get('/adminCategorias', 'CategoriasController@index');
 Route::get('/formAgregarCategoria', 'CategoriasController@create');
 Route::post('/agregarCategoria', 'CategoriasController@store');
 
+Route::get('/formModificarCategoria/{id}','CategoriasController@edit');
+Route::post('/modificarCategoria','CategoriasController@update');
+
+Route::get('/formEliminarCategoria/{id}','CategoriasController@delete');
+Route::post('eliminarCategoria','CategoriasController@destroy');
+
 ############## CRUD Marcas ###################
 Route::get('/adminMarcas', 'MarcasController@index');
 

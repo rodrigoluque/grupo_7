@@ -71,6 +71,8 @@ class CategoriasController extends Controller
     public function edit($id)
     {
         //
+        $categoria = Categoria::find($id);
+        return view('formModificarCategoria', [ 'categoria'=>$categoria ]);
     }
 
     /**
@@ -80,9 +82,14 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        
+        $Categoria = Categoria::find($request->input('idCategoria'));
+        $Categoria->catNombre = $request->input('catNombre');
+        $Categoria->save();
+        return redirect('/adminCategorias')
+            ->with('mensaje', 'Categoria '.$Categoria->catNombre.' modificada con éxito');
     }
 
     /**
@@ -91,8 +98,22 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    public function delete($id){
+        $categoria = Categoria::find($id);
+        return view('formEliminarCategoria', [ 'categoria'=>$categoria ]);
+    }
+
+    public function destroy(Request $request)
     {
         //
+        $id=$request["idCategoria"];
+
+          $categoria=Categoria::find($id);
+
+          $categoria->delete();
+
+          return redirect('/adminCategorias');
+
     }
 }
