@@ -99,8 +99,22 @@ class MarcasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+     public function delete($id){ //Metodo que sirve para pasar por post el id  y reenviarlo a formEliminarMarca
+        $marca = Marca::find($id);
+        return view('formEliminarMarca', [ 'marca'=>$marca ]);
+     }
+
+
+    public function destroy(Request $request) //Metodo que sirve para eliminar, atrapamos por request el idMarca de formulario y luego invocamos al model para llamar a la funcion delete.
     {
-        //
+           $id=$request["idMarca"];
+
+          $marca=Marca::find($id);
+
+          $marca->delete();
+
+          return redirect('/adminMarcas');
+      
     }
 }

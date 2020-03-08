@@ -36,7 +36,7 @@
                             <i class="material-icons">
                                 create   </i>
                         </a>
-                        <a href="" class="btn btn-danger">
+                    <a href="/formEliminarMarca/{{$marca->idMarca}}" class="btn btn-danger">
                             <i class="material-icons">
                                 delete_sweep
                                 </i>
