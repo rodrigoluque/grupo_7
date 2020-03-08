@@ -14,28 +14,32 @@
         @endif
 
         <table class="table table-bordered table-hover table-striped">
-            <thead class="thead-dark">
+            <thead class="bg-info">
             <tr>
-                <th>id</th>
-                <th>Marca</th>
-                <th colspan="2">
-                    <a href="/formAgregarMarca" class="btn btn-dark">Agregar</a>
+                <th scope="col">id</th>
+                <th scope="col">Marca</th>
+                <th>
+                    <a href="/formAgregarMarca" class="btn btn-success">
+                        <i class="material-icons">
+                            add
+                            </i></a>
                 </th>
             </tr>
             </thead>
             <tbody>
             @foreach( $marcas as $marca )
                 <tr>
-                    <td>{{$marca->idMarca}}</td>
+                    <td> {{$marca->idMarca}}</td>
                     <td>{{$marca->mkNombre}}</td>
                     <td>
-                        <a href="/formModificarMarca/{{$marca->idMarca}}" class="btn btn-outline-secondary">
-                            Modificar
+                        <a href="/formModificarMarca/{{$marca->idMarca}}" class="btn btn-primary">
+                            <i class="material-icons">
+                                create   </i>
                         </a>
-                    </td>
-                    <td>
-                        <a href="" class="btn btn-outline-secondary">
-                            Eliminar
+                        <a href="" class="btn btn-danger">
+                            <i class="material-icons">
+                                delete_sweep
+                                </i>
                         </a>
                     </td>
                 </tr>
@@ -45,5 +49,6 @@
 
         {{ $marcas->links() }}
 
+        <br>
 
     @endsection

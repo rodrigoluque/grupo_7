@@ -8,27 +8,86 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/estilos.css')}} ">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
     <title>@yield('title')</title>
 </head>
 <body>
-    <header>
-
-        <nav class="site-header sticky-top py-1 bg-info">
-            <div class="container d-flex flex-column flex-md-row justify-content-between">
-                <a class="py-2" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
-                </a>
-                <a class="py-2 d-md-inline-block text-white" href="/inicio">Inicio</a>
-                <a class="py-2 d-md-inline-block text-white" href="/adminMarcas">Admin Marcas</a>
-                <a class="py-2 d-md-inline-block text-white" href="/adminCategorias">Admin Categorías</a>
-                <a class="py-2 d-md-inline-block text-white" href="/adminProductos">Admin Productos</a>
-             </div>
-        </nav>
-
+    <header class="mb-3">
+        <!-- Inicio Navbar, fixed-top-->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+          <div class="container">
+              <!-- la marca del comercio-->
+              <a href="https://icon-library.net/icon/s-app-icon-2.html" title="S App Icon #38237"><img src="https://icon-library.net//images/s-app-icon/s-app-icon-2.jpg" width="30" /></a>
+              <a class="navbar-brand" href="" target="_self">
+                  <strong class="blue-text">SHEIN</strong>
+                  
+              </a>
+              <!-- botón hamburguesa en collapse -->
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <!-- collapse -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <!-- links de la izquierda -->
+              <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="/inicio">Inicio
+                      <span class="sr-only">(current)</span>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/adminMarcas" target="_self">Admin Marcas</a>
+                  </li>
+      
+                 
+                  <li class="nav-item">
+                      <a class="nav-link" href="/adminCategorias" target="_self">Admin Categorías</a>
+                  </li>
+      
+      
+                  <li class="nav-item">
+                      <a class="nav-link" href="/adminProductos" target="_self">Admin Productos</a>
+                  </li>
+              </ul>
+              <!-- links de la derecha -->
+              <ul class="navbar-nav nav-flex-icons">
+      
+                  <li class="nav-item">
+                      <a href="https://www.facebook.com" class="nav-link" target="_blank">
+                      <i class="fab fa-facebook-f"></i>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="https://www.twitter.com" class="nav-link" target="_blank">
+                      <i class="fab fa-twitter"></i>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="https://www.instagram.com" class="nav-link" target="_blank">
+                      <i class="fab fa-instagram"></i>
+                      </a>
+                  </li>
+      
+                  <li class="nav-item">
+                      <a class="nav-link"  href="vistaCarritoCompras.php">
+      
+                      <i class="fas fa-shopping-cart" >4</i>
+                     <!-- <span class="clearfix d-none d-sm-inline-block"> Carrito </span> -->
+                      <!-- <span class="badge red z-depth-1 mr-1">1</span> -->
+                      </a>
+                  </li>
+      
+              </ul>
+          </div>
+          </div>
+      </nav> <!-- Fin Navbar, fixed-top-->
+      
     </header>
 
-    <main class="container">
+    <main class="container mt-5">
         <h1>@yield('h1')</h1>
 
         @yield('main')

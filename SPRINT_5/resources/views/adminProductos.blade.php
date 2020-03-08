@@ -6,8 +6,8 @@
 
     @section('main')
 
-        <table class="table table-hover table-striped table-border">
-            <thead class="thead-dark">
+        <table class="table table-hover table-striped table-bordered">
+            <thead class="bg-info">
             <tr>
                 <th>Nombre</th>
                 <th>Precio</th>
@@ -16,9 +16,12 @@
                 <th>Presentacion</th>
                 <th>Stock</th>
                 <th>Imagen</th>
-                <th colspan="2">
-                    <a href="/formAgregarProducto" class="btn btn-dark">
-                        Agregar
+                <th>
+                    <a href="/formAgregarProducto" class="btn btn-success">
+                        
+                        <i class="material-icons">
+                            add
+                            </i>
                     </a>
                 </th>
             </tr>
@@ -34,18 +37,21 @@
                 <td>{{ $producto->prdStock }}</td>
                 <td><img src="{{ asset('images/productos') }}/{{ $producto->prdImagen }}" class="img-thumbnail"></td>
                 <td>
-                    <a href="" class="btn btn-outline-secondary">
-                        Modificar
+                    <a href="" class="btn btn-primary">
+                        <i class="material-icons">
+                            create   </i>
+                    </a>
+                    <a href="" class="btn btn-danger">
+                        <i class="material-icons">
+                            delete_sweep
+                            </i>
                     </a>
                 </td>
-                <td>
-                    <a href="" class="btn btn-outline-secondary">
-                        Eliminar
-                    </a>
-                </td>
+        
             </tr>
         @endforeach
             </tbody>
         </table>
+     <br>   
 
     @endsection

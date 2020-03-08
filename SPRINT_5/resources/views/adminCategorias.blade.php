@@ -12,7 +12,9 @@
                 <th>id</th>
                 <th>Categoria</th>
                 <th colspan="2">
-                    <a href="/formAgregarCategoria" class="btn btn-success">Agregar</a>
+                    <a href="/formAgregarCategoria" class="btn btn-success"> <i class="material-icons">
+                        add
+                        </i></a>
                 </th>
             </tr>
             </thead>
@@ -23,10 +25,13 @@
                     <td>{{$categoria->catNombre}}</td>
                     <td>
                         <a href="" class="btn btn-primary">
-                            Modificar
+                            <i class="material-icons">
+                                create   </i>
                         </a>
                         <a href="" class="btn btn-danger">
-                            Eliminar
+                            <i class="material-icons">
+                                delete_sweep
+                                </i>
                         </a>
                     </td>
                   
