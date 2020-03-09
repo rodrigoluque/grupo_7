@@ -6,6 +6,13 @@
 
     @section('main')
 
+      {{-- mensajes de ok --}}
+      @if( session()->has('mensaje') )
+      <div class="alert alert-success">
+          {{ session()->get('mensaje') }}
+      </div>
+     @endif
+
         <table class="table table-hover table-striped table-bordered">
             <thead class="bg-info">
             <tr>
@@ -33,19 +40,21 @@
                 <td>{{ $producto->prdPrecio }}</td>
                 <td>{{ $producto->getMarca->mkNombre }}</td>
                 <td>{{ $producto->getCategoria->catNombre }}</td>
-                <td>{{ $producto->Presentacion }}</td>
+                <td>{{ $producto->prdPresentacion }}</td>
                 <td>{{ $producto->prdStock }}</td>
-                <td><img src="{{ asset('images/productos') }}/{{ $producto->prdImagen }}" class="img-thumbnail"></td>
+                <td><img src="/storage/images/{{ $producto->prdImagen }}" class="img-thumbnail" style="width: 200px; height: 200px;"></td>
                 <td>
-                    <a href="" class="btn btn-primary">
+                    <div class="d-block"><a href="/formModificarProducto/{{$producto->idProducto}}" class="btn btn-primary ">
                         <i class="material-icons">
                             create   </i>
-                    </a>
-                    <a href="" class="btn btn-danger">
+                    </a></div>
+                    <div  class="d-block">
+                    <a href="/formEliminarProducto/{{$producto->idProducto}}" class="btn btn-danger">
                         <i class="material-icons">
                             delete_sweep
                             </i>
                     </a>
+                </div>
                 </td>
         
             </tr>

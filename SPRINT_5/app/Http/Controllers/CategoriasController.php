@@ -113,7 +113,7 @@ class CategoriasController extends Controller
 
           $categoria->delete();
 
-          return redirect('/adminCategorias');
+          return redirect('/adminCategorias')->with('mensaje', 'La Categoria '.$categoria->catNombre.'sé elimino con éxito');
 
     }
 }

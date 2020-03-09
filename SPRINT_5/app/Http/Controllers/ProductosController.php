@@ -50,8 +50,8 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         //
-        $validacion = $request->validate([
-            'prdImagen' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    /*  $validacion = $request->validate([
+            'prdImagen' => 'file|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         $imageName = 'noDisponible.jpg';
@@ -62,8 +62,38 @@ class ProductosController extends Controller
             $imageName = $request->prdImagen->getClientOriginalName();
             $request->prdImagen->move(public_path('images/productos'), $imageName);
         }
-        return $imageName;
+       return $imageName;*/
+       $validacion = $request->validate([
+        'prdImagen' => 'file|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    ]);
+      
+    $ruta=$request->file("prdImagen")->store("public/images");
+    $nombreArchivo=basename($ruta); 
+
+
+        $prdNombre = $request->input('prdNombre');
+        $prdPrecio = $request->input('prdPrecio');
+        $idMarca = $request->input('idMarca');
+        $idCategoria = $request->input('idCategoria');
+        $prdPresentacion = $request->input('prdPresentacion');
+        $prdStock = $request->input('prdStock');
+        $prdImagen = $nombreArchivo;
+        
+        $Producto= new Producto;
+        $Producto->prdNombre = $prdNombre;
+        $Producto->prdPrecio = $prdPrecio;
+        $Producto->idMarca = $idMarca;
+        $Producto->idCategoria = $idCategoria;
+        $Producto->prdPresentacion = $prdPresentacion;
+        $Producto->prdStock = $prdStock;
+        $Producto->prdImagen = $prdImagen;
+        $Producto->save();
+        return redirect('/adminProductos')
+            ->with('mensaje', 'El Producto '.$Producto->prdNombre.' sé agregó con éxito');
+
     }
+
+
 
     /**
      * Display the specified resource.
@@ -85,6 +115,13 @@ class ProductosController extends Controller
     public function edit($id)
     {
         //
+
+        $marcas = Marca::all();
+        $categorias = Categoria::all();
+        $producto = Producto::find($id);
+        return view('formModificarProducto', [ 'categorias'=>$categorias,
+                                               'marcas'=>$marcas,
+                                               'producto'=>$producto ]);
     }
 
     /**
@@ -94,10 +131,32 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+         //
+         $validacion = $request->validate([
+            'prdImagen' => 'file|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+          
+        $ruta=$request->file("prdImagen")->store("public/images");
+        $nombreArchivo=basename($ruta);
+
+
+        $Producto = Producto::find($request->input('idProducto'));
+        $Producto->prdNombre = $request->input('prdNombre');
+        $Producto->prdPrecio = $request->input('prdPrecio');
+        $Producto->idMarca = $request->input('idMarca');
+        $Producto->idCategoria = $request->input('idCategoria');
+        $Producto->prdPresentacion = $request->input('prdPresentacion');
+        $Producto->prdStock = $request->input('prdStock');
+        $Producto->prdImagen= $nombreArchivo;
+
+        $Producto->save();
+        return redirect('/adminProductos')
+            ->with('mensaje', 'Producto '.$Producto->prdNombre.' modificada con éxito');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -105,8 +164,21 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    public function delete($id){
+        $producto = Producto::find($id);
+        return view('formEliminarProducto', [ 'producto'=>$producto ]);
+    }
+
+    public function destroy(Request $request)
     {
         //
+        $id=$request["idProducto"];
+
+        $producto=Producto::find($id);
+
+        $producto->delete();
+
+        return redirect('/adminProductos');
     }
 }

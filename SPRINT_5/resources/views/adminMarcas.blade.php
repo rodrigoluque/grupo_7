@@ -16,9 +16,9 @@
         <table class="table table-bordered table-hover table-striped">
             <thead class="bg-info">
             <tr>
-                <th scope="col">id</th>
-                <th scope="col">Marca</th>
-                <th>
+                <th >id</th>
+                <th >Marca</th>
+                <th colspan="2">
                     <a href="/formAgregarMarca" class="btn btn-success">
                         <i class="material-icons">
                             add
@@ -36,12 +36,14 @@
                             <i class="material-icons">
                                 create   </i>
                         </a>
-                    <a href="/formEliminarMarca/{{$marca->idMarca}}" class="btn btn-danger">
+                        <a href="/formEliminarMarca/{{$marca->idMarca}}" class="btn btn-danger">
                             <i class="material-icons">
-                                delete_sweep
-                                </i>
-                        </a>
+                                       delete_sweep
+                                       </i>
+                               </a>
                     </td>
+
+                
                 </tr>
             @endforeach
             </tbody>

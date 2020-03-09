@@ -59,5 +59,16 @@ Route::get('/formEliminarMarca/{id}','MarcasController@delete');
 Route::post('/eliminarMarca','MarcasController@destroy');
 
 ############## CRUD PRODUCTOS ###################
+Route::get('/formModificarProducto/{id}','ProductosController@edit');
+Route::post('/modificarProducto', 'ProductosController@update');
+
+Route::get('/formEliminarProducto/{id}','ProductosController@delete');
+Route::post('/eliminarProducto','ProductosController@destroy');
+
 Route::get('/adminProductos', 'ProductosController@index');
+
 Route::get('/formAgregarProducto', 'ProductosController@create');
+Route::post('/agregarProducto','ProductosController@store');
+
+
+
